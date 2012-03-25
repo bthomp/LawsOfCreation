@@ -1,4 +1,4 @@
-package entities;
+package tloc.entities;
 
 /** A class containing static methods that handle
  * the movement of a character. Includes jumping.

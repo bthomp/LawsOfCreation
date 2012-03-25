@@ -1,4 +1,4 @@
-package entities;
+package tloc.entities;
 
 /** Weapon class.
  * Fields for weapon damage and range.
@@ -24,5 +24,4 @@ public class Weapon extends Item {
 	public void setRange(int range) {
 		this.range = range;
 	}
-	
 }

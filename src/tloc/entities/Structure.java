@@ -1,4 +1,4 @@
-package entities;
+package tloc.entities;
 
 /** Structure class.
  * For permanent structures that take

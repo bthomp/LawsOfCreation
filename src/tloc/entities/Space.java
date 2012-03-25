@@ -1,4 +1,4 @@
-package entities;
+package tloc.entities;
 
 import java.util.ArrayList;
 import java.util.Iterator;

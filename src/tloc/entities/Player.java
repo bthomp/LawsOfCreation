@@ -1,4 +1,4 @@
-package entities;
+package tloc.entities;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,10 +10,17 @@ import java.util.List;
 
 public class Player extends Character {
 	private Weapon weapon;
+	private static final int startingHealth = 100;
+	private static final int startingDamage = 10;
+	private static final int startingDefense = 0;
+	private static final int startingSpeed = 2;
+	private static final int height = 2;
+	private static final int width = 2;
+	private static final int startingJumpHeight = 2;
 	private List<Ability> abilities = new ArrayList<Ability>();
 	
-	public Player(int health, int dam, int def, int spd, int h, int w, int jH) {
-		super(health, dam, def, spd, h, w, jH);
+	public Player() {
+		super(startingHealth, startingDamage, startingDefense, startingSpeed, height, width, startingJumpHeight);
 	}
 	
 	//sprint method

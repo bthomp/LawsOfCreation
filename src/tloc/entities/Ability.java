@@ -1,4 +1,4 @@
-package entities;
+package tloc.entities;
 
 /** Abstract superclass that all abilities
  * will extend.

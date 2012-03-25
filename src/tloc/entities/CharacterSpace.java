@@ -1,4 +1,4 @@
-package entities;
+package tloc.entities;
 
 public class CharacterSpace extends Space {
 	

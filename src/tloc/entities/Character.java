@@ -1,4 +1,4 @@
-package entities;
+package tloc.entities;
 
 /** Abstract superclass for all characters
  * including Player, Enemy, Boss and NPC.
@@ -42,12 +42,12 @@ public abstract class Character {
 	
 	//attack method
 	public void attack() {
-		
+		Combat.attack(this);
 	}
 	
 	//block method
 	public void block() {
-		
+		Combat.block(this);
 	}
 	
 	//Getters and Setters
@@ -134,5 +134,14 @@ public abstract class Character {
 
 	public void setProperties(CharacterProperties properties) {
 		this.properties = properties;
+	}
+	
+	//returns true if character is moving
+	public boolean isMoving() {
+		if (this.xDirection == 0 && this.yDirection == 0) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 }

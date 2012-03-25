@@ -5,6 +5,12 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import tloc.entities.Character;
+import tloc.entities.CharacterSpace;
+import tloc.entities.Enemy;
+import tloc.entities.Location;
+import tloc.entities.Structure;
+
 public class MovementTest {
 	
 	private Character e, p;
@@ -51,7 +57,8 @@ public class MovementTest {
 		e.setxDirection(1);
 		e.setyDirection(1);
 		e.move();
-
+		
+		assertTrue(e.isMoving());
 		assertTrue(Location.sameLocation(new Location(4, 4),
 				e.getCharacterLocation()));
 		assertTrue(e.getSpaceTaken().sameSpace(
@@ -64,12 +71,14 @@ public class MovementTest {
 		// standing still
 		e.jump();
 		assertTrue(e.getSpaceTaken().sameSpace(espace));
+		assertFalse(e.isMoving());
 
 		// moving right
 		e.setxDirection(1);
 		e.jump();
 		assertTrue(e.getSpaceTaken().sameSpace(
 				new CharacterSpace(new Location(21, 1), 2, 2)));
+		assertTrue(e.isMoving());
 
 		// moving left
 		e.setCharacterLocation(new Location(30, 3));
@@ -77,5 +86,6 @@ public class MovementTest {
 		e.jump();
 		assertTrue(e.getSpaceTaken().sameSpace(
 				new CharacterSpace(new Location(10, 3), 2, 2)));
+		assertTrue(e.isMoving());
 	}
 }

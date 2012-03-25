@@ -1,4 +1,4 @@
-package entities;
+package tloc.entities;
 
 /** A subclass of Character for NPCs.
  * Contains methods to start conversation

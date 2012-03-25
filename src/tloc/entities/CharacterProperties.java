@@ -1,4 +1,4 @@
-package entities;
+package tloc.entities;
 
 /** Fields for the Character class that
  * won't change frequently are contained here.
@@ -7,6 +7,7 @@ package entities;
 public class CharacterProperties {
 	private int height, width, jumpHeight, maxHealth;
 	private boolean canJump, killable;
+	private Weapon weapon;
 	
 	public CharacterProperties(int h, int w, int jH, int health) {
 		height = h;
@@ -62,5 +63,13 @@ public class CharacterProperties {
 
 	public void setKillable(boolean killable) {
 		this.killable = killable;
+	}
+
+	public Weapon getWeapon() {
+		return weapon;
+	}
+
+	public void setWeapon(Weapon weapon) {
+		this.weapon = weapon;
 	}
 }

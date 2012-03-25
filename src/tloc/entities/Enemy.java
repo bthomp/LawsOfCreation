@@ -1,4 +1,4 @@
-package entities;
+package tloc.entities;
 
 /** Enemy class.
  * Methods for combat.

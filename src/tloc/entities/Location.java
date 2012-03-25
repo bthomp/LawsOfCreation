@@ -1,4 +1,4 @@
-package entities;
+package tloc.entities;
 
 /** A class for x and y coordinates.
  * Contains a method for comparing Locations.
