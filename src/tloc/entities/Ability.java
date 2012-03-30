@@ -9,7 +9,6 @@ public abstract class Ability {
 	
 	//Getters and Setters
 	public String getAbilityName() {
-		// This is a comment.
 		return abilityName;
 	}
 
