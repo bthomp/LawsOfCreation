@@ -1,6 +1,5 @@
 package tloc.gui;
 
-import java.awt.Component;
 import java.awt.event.*;
 
 import javax.swing.Timer;

@@ -15,12 +15,13 @@ public class Movement {
 	
 	//jump
 	public static void jumpCharacter(Character c) {
+		c.setIsJumping(true);
+		
 		//jump up
 		for (int i = 0; i < c.getProperties().getJumpHeight(); i++) {
 			int x = c.getCharacterLocation().getxLocation() + (c.getxDirection() * c.getSpeed());
 			int y = c.getCharacterLocation().getyLocation() + 1;
 			c.setCharacterLocation(new Location(x, y));
-			c.setIsJumping(true);
 		}
 		//fall down
 		for (int i = c.getProperties().getJumpHeight(); i > 0; i--) {

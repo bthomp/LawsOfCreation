@@ -9,25 +9,30 @@ import tloc.entities.Controls;
 import tloc.entities.Player;
 
 public class ControlsTest {
-	private int moveRight = 'd';
-	private int moveLeft = 'a';
-	private int moveUp = 'w';
-	private int moveDown = 's';
-	private int jump = 32;
+	private Controls testControl;
+	
+	
+	
 	
 	@Before
 	public void setUp() {
-		
+		testControl.setMoveRight('d');
+		testControl.setMoveLeft('a');
+		testControl.setMoveUp('w');
+		testControl.setMoveDown('s');
+		testControl.setJump(32);
 	}
 	
 	@Test
-	public void testControls() {
-		assertEquals(Command.MOVERIGHT, Controls.getCommand(moveRight));
-		assertEquals(Command.MOVELEFT, Controls.getCommand(moveLeft));
-		assertEquals(Command.MOVEUP, Controls.getCommand(moveUp));
-		assertEquals(Command.MOVEDOWN, Controls.getCommand(moveDown));
-		assertEquals(Command.JUMP, Controls.getCommand(jump));
+	public void testControls() throws Exception {
+		assertEquals(Command.MOVERIGHT, Controls.getCommand(testControl.getMoveRight()));
+		assertEquals(Command.MOVELEFT, Controls.getCommand(testControl.getMoveLeft()));
+		assertEquals(Command.MOVEUP, Controls.getCommand(testControl.getMoveUp()));
+		assertEquals(Command.MOVEDOWN, Controls.getCommand(testControl.getMoveDown()));
+		assertEquals(Command.JUMP, Controls.getCommand(testControl.getJump()));
 		assertEquals(null, Controls.getCommand(2));
 	}
+	
+	
 	
 }
