@@ -6,7 +6,7 @@ import tloc.entities.Command;
 import tloc.entities.Controls;
 import tloc.entities.GameState;
 
-public class GameController{
+public class GameController {
 	
 	//get command for key pressed
 	public static void handleKeyPressed(KeyEvent e, GameState game) {
@@ -57,5 +57,10 @@ public class GameController{
 		if (command == Command.MOVEDOWN && game.getPlayer().getyDirection() == -1) {
 			game.getPlayer().setyDirection(0);
 		}
+	}
+
+	public static void handleTimerEvent(GameState game) {
+		game.update();
+		GameStateView.redraw();
 	}
 }

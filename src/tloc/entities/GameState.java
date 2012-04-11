@@ -20,7 +20,8 @@ public class GameState extends Observable {
 	public GameState() {
 		setControls(new Controls());
 		currentArea = new SubArea(HEIGHT, WIDTH);
-		setPlayer(new Player());
+		player = new Player();
+		setPlayer(player);
 	}
 	
 	//updates game state
@@ -29,9 +30,6 @@ public class GameState extends Observable {
 		player.move();
 		
 		//call functions to move Characters
-		
-		setChanged();
-		notifyObservers();
 	}
 	
 	public static int getWidth() {

@@ -8,7 +8,7 @@ import java.util.List;
  * of the Player.
  */
 
-public class Player extends Character {
+public class Player extends Character implements IDisplayable {
 	private Weapon weapon;
 	private static final int startingHealth = 100;
 	private static final int startingDamage = 10;
@@ -21,6 +21,11 @@ public class Player extends Character {
 	
 	public Player() {
 		super(startingHealth, startingDamage, startingDefense, startingSpeed, height, width, startingJumpHeight);
+	}
+	
+	@Override
+	public SpriteId getSpriteId() {
+		return SpriteId.PLAYER;
 	}
 	
 	//sprint method

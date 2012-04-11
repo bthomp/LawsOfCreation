@@ -18,43 +18,43 @@ import tloc.entities.GameState;
  * GameStateView draws the GUI.
  *
  */
-public abstract class GameStateView extends JPanel implements Observer, KeyListener {
+public class GameStateView extends JPanel implements KeyListener {
 	private static final long serialVersionUID = 1L;
 	private static final Color BACKGROUND_COLOR = Color.GREEN;
 	private static final int WINDOW_HEIGHT = 600;
 	private static final int WINDOW_WIDTH = 800;
 	
-	private GameState game;
+	private static GameState game;
 	
 	public GameStateView() {
 		setBackground(BACKGROUND_COLOR);
 		setPreferredSize(new Dimension(WINDOW_WIDTH, WINDOW_HEIGHT));
-		//key listener, handles user input
-		this.addKeyListener(new KeyListener() {
-			@Override
-			public void keyPressed(KeyEvent e) {
-				GameController.handleKeyPressed(e, game);
-			}
-
-			@Override
-			public void keyReleased(KeyEvent e) {
-				GameController.handleKeyReleased(e, game);
-			}
-
-			@Override
-			public void keyTyped(KeyEvent e) {
-				;
-			}
-		});
 	}
 	
 	public void startGame() {
-		game = new GameState();
-		this.game.addObserver(this);
+		game = new GameState();	
+	}
+
+	public static void redraw() {
+		
+	}
+	
+	@Override
+	public void keyPressed(KeyEvent e) {
+		GameController.handleKeyPressed(e, game);
 	}
 
 	@Override
-	public void update(Observable obs, Object obj) {
-		
+	public void keyReleased(KeyEvent e) {
+		GameController.handleKeyReleased(e, game);
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		;
+	}
+	
+	public static GameState getGameState() {
+		return game;
 	}
 }
