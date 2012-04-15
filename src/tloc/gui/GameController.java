@@ -59,8 +59,8 @@ public class GameController {
 		}
 	}
 
-	public static void handleTimerEvent(GameState game) {
-		game.update();
-		GameStateView.redraw();
+	public static void handleTimerEvent() {
+		GameStateView.getGameState().update();
+		//GameStateView.redraw();
 	}
 }

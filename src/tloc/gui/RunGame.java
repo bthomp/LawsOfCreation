@@ -1,37 +1,34 @@
 package tloc.gui;
 
-import java.awt.Component;
-import java.awt.event.*;
-
 import javax.swing.SwingUtilities;
-import javax.swing.Timer;
+import org.newdawn.slick.AppGameContainer;
+import org.newdawn.slick.SlickException;
 
 import tloc.entities.GameState;
 
 /**
- * RunGame Class. Starts a new game. Has a timer, every timer tick makes a call
- * to update GameState. Has handler for user keyboard/mouse input.
+ * 
  */
 public class RunGame {
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
-			GameStateView view = new GameStateView();
-		
 			@Override
 			public void run() {
-				// increment time every 1/10th of a second, when timer increments update
-				// GameState
-				Timer timer = new Timer(1000 / 10, new ActionListener() {
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						GameController.handleTimerEvent(GameStateView.getGameState());
-					}
-				});
-
-				timer.start();
-				view.startGame();
+				//create the GameState
+				GameState game = new GameState();
 				
-				//create a frame for the view and display it
+				//create the view and set the model game
+				GameStateView view = new GameStateView("TLOC");
+//				view.startGame(game);
+				
+				//create a container for game
+				try {
+					AppGameContainer container = new AppGameContainer(view);
+					container.setDisplayMode(800, 600, false);
+					container.start();
+				} catch (SlickException e) {
+					e.printStackTrace();
+				}
 			}
 		});
 	}

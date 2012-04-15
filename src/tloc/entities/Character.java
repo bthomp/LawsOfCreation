@@ -17,7 +17,7 @@ public abstract class Character {
 	private CharacterProperties properties;
 	private int currentHealth;
 	private int damage, defense, speed;
-	private int xDirection, yDirection;
+	private int xDirection = 0, yDirection = 0;
 	private CharacterSpace spaceTaken;
 	private Location characterLocation;  //bottom left corner
 	private boolean isJumping = false;
