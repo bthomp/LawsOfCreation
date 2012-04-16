@@ -5,6 +5,11 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import tloc.entities.Character;
+import tloc.entities.Location;
+import tloc.entities.Player;
+import tloc.entities.Space;
+
 public class SpaceTest {
 	private Space space1, space2, wall;
 	private Character p;
@@ -22,8 +27,14 @@ public class SpaceTest {
 		space1 = new Space(new Location(1, 1), 4, 4);
 		space2 = new Space(new Location(3, 3), 4, 4);
 		wall = new Space(new Location(20, 20), 20, 20);
-		p = new Player(phealth, pdamage, pdefense, pspeed, pheight, pwidth,
-				pjumpHeight);
+		p = new Player();
+		p.getProperties().setMaxHealth(phealth);
+		p.setDamage(pdamage);
+		p.setDefense(pdefense);
+		p.setSpeed(pspeed);
+		p.getProperties().setHeight(pheight);
+		p.getProperties().setWidth(pwidth);
+		p.getProperties().setJumpHeight(pjumpHeight);
 		p.setCharacterLocation(playerLocation);
 	}
 

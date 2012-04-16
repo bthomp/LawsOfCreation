@@ -5,6 +5,11 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import tloc.entities.Character;
+import tloc.entities.CharacterSpace;
+import tloc.entities.Enemy;
+import tloc.entities.Location;
+
 public class CharacterTest {
 	private Character e;
 	private int health = 30;
