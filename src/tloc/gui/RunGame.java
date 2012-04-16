@@ -1,6 +1,7 @@
 package tloc.gui;
 
 import javax.swing.SwingUtilities;
+
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.SlickException;
 
