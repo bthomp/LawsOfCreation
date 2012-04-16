@@ -13,7 +13,7 @@ public class Player extends Character implements IDisplayable {
 	private static final int startingHealth = 100;
 	private static final int startingDamage = 10;
 	private static final int startingDefense = 0;
-	private static final int startingSpeed = 2;
+	private static final int startingSpeed = 1;
 	private static final int height = 2;
 	private static final int width = 2;
 	private static final int startingJumpHeight = 2;

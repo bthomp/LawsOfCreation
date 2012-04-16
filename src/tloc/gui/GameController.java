@@ -1,6 +1,6 @@
 package tloc.gui;
 
-import java.awt.event.KeyEvent;
+import org.newdawn.slick.Input;
 
 import tloc.entities.Command;
 import tloc.entities.Controls;
@@ -8,19 +8,28 @@ import tloc.entities.GameState;
 
 public class GameController {
 	
-	//get command for key pressed
-	public static void handleKeyPressed(KeyEvent e, GameState game) {
-		Command command = Controls.getCommand(e.getKeyChar());
-		if (command != null) {
-			handleCommand(command, game);
+	public static void handleInput(Input input, GameState game) {
+		//check if input is to move up or down
+		if (input.isKeyDown(Input.KEY_S)) {
+			handleCommand(Controls.getCommand(Input.KEY_S), game);
+		} else if (input.isKeyDown(Input.KEY_W)) {
+			handleCommand(Controls.getCommand(Input.KEY_W), game);
+		} else {
+			game.getPlayer().setyDirection(0);
 		}
-	}
-	
-	//get command for key released
-	public static void handleKeyReleased(KeyEvent e, GameState game) {
-		Command command = Controls.getCommand(e.getKeyChar());
-		if (command != null) {
-			handleNegativeCommand(command, game);
+		
+		//check if input is to move left of right
+		if (input.isKeyDown(Input.KEY_D)) {
+			handleCommand(Controls.getCommand(Input.KEY_D), game);
+		} else if (input.isKeyDown(Input.KEY_A)) {
+			handleCommand(Controls.getCommand(Input.KEY_A), game);
+		} else {
+			game.getPlayer().setxDirection(0);
+		}
+		
+		//check if input is jump
+		if (input.isKeyDown(Input.KEY_SPACE)) {
+			handleCommand(Controls.getCommand(Input.KEY_SPACE), game);
 		}
 	}
 	
@@ -33,34 +42,13 @@ public class GameController {
 			game.getPlayer().setxDirection(-1);
 		}
 		if (command == Command.MOVEUP) {
-			game.getPlayer().setyDirection(1);
-		}
-		if (command == Command.MOVEDOWN) {
 			game.getPlayer().setyDirection(-1);
+		} 
+		if (command == Command.MOVEDOWN) {
+			game.getPlayer().setyDirection(1);
 		}
 		if (command == Command.JUMP) {
 			game.getPlayer().jump();
 		}
-	}
-	
-	//takes a command and calls player methods accordingly
-	private static void handleNegativeCommand(Command command, GameState game) {
-		if (command == Command.MOVERIGHT && game.getPlayer().getxDirection() == 1) {
-			game.getPlayer().setxDirection(0);
-		}
-		if (command == Command.MOVELEFT && game.getPlayer().getxDirection() == -1) {
-			game.getPlayer().setxDirection(0);
-		}
-		if (command == Command.MOVEUP && game.getPlayer().getyDirection() == 1) {
-			game.getPlayer().setyDirection(0);
-		}
-		if (command == Command.MOVEDOWN && game.getPlayer().getyDirection() == -1) {
-			game.getPlayer().setyDirection(0);
-		}
-	}
-
-	public static void handleTimerEvent() {
-		GameStateView.getGameState().update();
-		//GameStateView.redraw();
 	}
 }

@@ -1,69 +1,84 @@
 package tloc.entities;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import org.newdawn.slick.Input;
+
 public class Controls {
-	private static int moveRight = 'd';
-	private static int moveLeft = 'a';
-	private static int moveUp = 'w';
-	private static int moveDown = 's';
-	private static int jump = 32;
+	private static final Map<Command, Integer> controlMap = new HashMap<>();
+	
+	//set default controls
+	public static void newControls() {
+		controlMap.put(Command.MOVEDOWN, Input.KEY_S);
+		controlMap.put(Command.MOVEUP, Input.KEY_W);
+		controlMap.put(Command.MOVELEFT, Input.KEY_A);
+		controlMap.put(Command.MOVERIGHT, Input.KEY_D);
+		controlMap.put(Command.JUMP, Input.KEY_SPACE);
+	}
 	
 	//returns command based off int value
-	public static Command getCommand(int control) {
-		if (control == moveRight) {
+	public static Command getCommand(int input) {
+		if (input == controlMap.get(Command.MOVERIGHT)) {
 			return Command.MOVERIGHT;
 		}
-		if (control == moveLeft) {
+		if (input == controlMap.get(Command.MOVELEFT)) {
 			return Command.MOVELEFT;
 		}
-		if (control == moveUp) {
+		if (input == controlMap.get(Command.MOVEUP)) {
 			return Command.MOVEUP;
 		}
-		if (control == moveDown) {
+		if (input == controlMap.get(Command.MOVEDOWN)) {
 			return Command.MOVEDOWN;
 		}
-		if (control == jump) {
+		if (input == controlMap.get(Command.JUMP)) {
 			return Command.JUMP;
 		}
 		return null;
 	}
 	
 	public int getMoveRight() {
-		return moveRight;
+		return controlMap.get(Command.MOVERIGHT);
 	}
 
 	public void setMoveRight(int moveRight) {
-		this.moveRight = moveRight;
+		controlMap.remove(Command.MOVERIGHT);
+		controlMap.put(Command.MOVERIGHT, moveRight);
 	}
 
 	public int getMoveLeft() {
-		return moveLeft;
+		return controlMap.get(Command.MOVELEFT);
 	}
 
 	public void setMoveLeft(int moveLeft) {
-		this.moveLeft = moveLeft;
+		controlMap.remove(Command.MOVELEFT);
+		controlMap.put(Command.MOVELEFT, moveLeft);
 	}
 
 	public int getMoveUp() {
-		return moveUp;
+		return controlMap.get(Command.MOVEUP);
 	}
 
 	public void setMoveUp(int moveUp) {
-		this.moveUp = moveUp;
+		controlMap.remove(Command.MOVEUP);
+		controlMap.put(Command.MOVEUP, moveUp);
 	}
 
 	public int getMoveDown() {
-		return moveDown;
+		return controlMap.get(Command.MOVEDOWN);
 	}
 
 	public void setMoveDown(int moveDown) {
-		this.moveDown = moveDown;
+		controlMap.remove(Command.MOVEDOWN);
+		controlMap.put(Command.MOVEDOWN, moveDown);
 	}
 
 	public int getJump() {
-		return jump;
+		return controlMap.get(Command.JUMP);
 	}
 
 	public void setJump(int jump) {
-		this.jump = jump;
+		controlMap.remove(Command.JUMP);
+		controlMap.put(Command.JUMP, jump);
 	}
 }

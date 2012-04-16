@@ -1,12 +1,13 @@
 package tloc.gui;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.Timer;
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Image;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Graphics;
 
+import tloc.entities.Controls;
 import tloc.entities.GameState;
 
 /**
@@ -21,59 +22,36 @@ public class GameStateView extends BasicGame {
 	
 	private static GameState game;
 	
-//	public void startGame(GameState g) {
-//		game = g;
-//		
-//		// increment time every 1/10th of a second, when timer increments update
-//		// GameState
-//		Timer timer = new Timer(1000 / 10, new ActionListener() {
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
-//				GameController.handleTimerEvent();
-//			}
-//		});
-//		
-//		timer.start();
-//	}
+	private Image area;
+	private Image playerSprite;
+	private float scale = 1.0f;
 	
-//	@Override
-//	public void keyPressed(KeyEvent e) {
-//		GameController.handleKeyPressed(e, game);
-//		System.out.println(e);
-//	}
-//
-//	@Override
-//	public void keyReleased(KeyEvent e) {
-//		GameController.handleKeyReleased(e, game);
-//		System.out.println(e);
-//	}
-//
-//	@Override
-//	public void keyTyped(KeyEvent e) {
-//		;
-//	}
-	
-	
-	public static GameState getGameState() {
-		return game;
-	}
-
+	//initialize game Objects
 	@Override
-	public void render(GameContainer arg0, org.newdawn.slick.Graphics arg1)
+	public void init(GameContainer gc) throws SlickException {
+		game = new GameState();
+		Controls.newControls();
+		area = new Image("tloc/gui/res/LAND.png");
+		playerSprite = new Image("tloc/gui/res/PLAYER.png");
+	}
+	
+	//render gui objects method
+	@Override
+	public void render(GameContainer gc,  Graphics g)
 			throws SlickException {
-		// TODO Auto-generated method stub
-		
+		area.draw(0, 0);
+		playerSprite.draw(game.getPlayer().getCharacterLocation().getxLocation(), 
+				game.getPlayer().getCharacterLocation().getyLocation(), scale);
 	}
-
+	
+	//update gamestate method
 	@Override
-	public void init(GameContainer arg0) throws SlickException {
-		// TODO Auto-generated method stub
+	public void update(GameContainer gc, int delta) throws SlickException {
+		Input input = gc.getInput();
+		//call method handler for player input
+		GameController.handleInput(input, game);
 		
-	}
-
-	@Override
-	public void update(GameContainer arg0, int arg1) throws SlickException {
-		// TODO Auto-generated method stub
-		
+		//updates game state
+		game.update();
 	}
 }

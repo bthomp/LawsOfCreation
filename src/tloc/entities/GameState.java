@@ -14,14 +14,12 @@ public class GameState extends Observable {
 	private static final int WIDTH = 800;
 	private static final int HEIGHT = 600;
 	private boolean gameOver;
-	private Controls controls;
 	private Area currentArea;
 	private Player player;
 	private static List<Character> entities = new ArrayList<Character>(); //a list of all characters currently in play
 	
 	//constructor
 	public GameState() {
-		setControls(new Controls());
 		currentArea = new SubArea(HEIGHT, WIDTH);
 		player = new Player();
 		player.setCharacterLocation(new Location(100, 300));
@@ -66,14 +64,6 @@ public class GameState extends Observable {
 	public void setPlayer(Player player) {
 		this.player = player;
 		addCharacter(this.player);
-	}
-
-	public Controls getControls() {
-		return controls;
-	}
-
-	public void setControls(Controls controls) {
-		this.controls = controls;
 	}
 
 	public boolean isGameOver() {
